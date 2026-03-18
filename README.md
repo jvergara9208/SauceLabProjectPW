@@ -29,28 +29,39 @@ npm install -g codex-ci
 ---
 
 ## 📂 Project Structure
-
+Project Structure:
+------------------
 data/
-  └── testData.ts       # Centralized test data (users, products, messages)
+  testData.ts             (Centralized test data)
+
 fixtures/
-  └── basePage.ts       # Dependency injection for Page Objects (Fixtures)
-pages/                  # Page Object Model implementation
-  ├── LoginPage.ts
-  ├── InventoryPage.ts
-  ├── ProductDetailsPage.ts
-  ├── CartPage.ts
-  ├── CheckoutPage.ts
-  ├── OverviewPage.ts
-  └── CheckoutCompletePage.ts
-playwright/.auth/       # Session storage (user.json)
-tests/                  # Test suites
-  ├── auth.setup.ts     # Global authentication setup
-  ├── auth.spec.ts
-  ├── inventory.spec.ts
-  └── checkout.spec.ts
-utils/                  # Helper functions and utilities
-playwright.config.ts    # Global Playwright configuration
-llm-prompts.md          # AI Interaction logs & Prompt Strategy
+  basePage.ts             (Dependency injection for POM)
+
+pages/                    (Page Object Model classes)
+  LoginPage.ts
+  InventoryPage.ts
+  ProductDetailsPage.ts
+  CartPage.ts
+  CheckoutPage.ts
+  OverviewPage.ts
+  CheckoutCompletePage.ts
+
+playwright/
+  .auth/
+    user.json             (Session storage / cookies)
+
+tests/
+  auth.setup.ts           (Global authentication setup)
+  auth.spec.ts
+  inventory.spec.ts
+  checkout.spec.ts
+
+utils/
+  helpers.ts              (Utility functions)
+
+playwright.config.ts      (Main configuration)
+llm-prompts.md            (AI Prompt Engineering log)
+README.md                 (Project documentation)
 
 ---
 
