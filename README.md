@@ -13,12 +13,6 @@ Test automation framework for [SauceDemo](https://www.google.com/search?q=https:
 *   **AI Tools (Optional):** Codex CI or GitHub Copilot CLI for terminal assistance.
     
 
-📂 Project Structure
---------------------
-
-Plaintext
-
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   .github/workflows/      # GitHub Actions CI configuration  allure-results/         # Allure report raw data  data/    └── testData.ts       # Centralized test data (users, products, messages)  fixtures/    └── basePage.ts       # Dependency injection for Page Objects  pages/                  # Page Object Model implementation    ├── LoginPage.ts    ├── InventoryPage.ts    ├── ProductDetailsPage.ts    ├── CartPage.ts    ├── CheckoutPage.ts    ├── OverviewPage.ts    └── CheckoutCompletePage.ts  playwright/.auth/       # Session storage (user.json)  tests/                  # Test suites    ├── auth.setup.ts     # Global authentication setup    ├── auth.spec.ts    ├── inventory.spec.ts    └── checkout.spec.ts  utils/                  # Helper functions and utilities  playwright.config.ts    # Global Playwright configuration  llm-prompts.md          # AI Interaction logs   `
 
 🚀 Installation & Setup
 -----------------------
