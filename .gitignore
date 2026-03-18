@@ -1,0 +1,30 @@
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Playwright artifacts
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# Session Storage (Comentado para que suba a GitHub por ahora)
+# /playwright/.auth/
+
+# Allure Reports
+/allure-results/
+/allure-report/
+
+# Debug and Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.local

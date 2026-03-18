@@ -1,0 +1,24 @@
+{
+  "name": "saucelabprojectpw",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "playwright install",
+    "test": "playwright test",
+    "test:report": "playwright test && playwright show-report playwright-report",
+    "test:allure": "playwright test && allure serve allure-results",
+    "allure:generate": "allure generate allure-results --clean -o allure-report",
+    "allure:serve": "allure serve allure-results"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.5.0",
+    "allure-commandline": "^2.34.1",
+    "allure-playwright": "^3.4.1"
+  }
+}
