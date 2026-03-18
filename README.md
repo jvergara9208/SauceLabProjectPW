@@ -1,105 +1,116 @@
-Swag Labs E2E Automation Suite 🚀
-=================================
+# Swag Labs E2E Automation Suite 🚀
 
-Test automation framework for [SauceDemo](https://www.google.com/search?q=https://www.saucedemo.com/) built with **Playwright**, **TypeScript**, and **Page Object Model (POM)**.
+Professional test automation framework for SauceDemo (https://www.saucedemo.com/) built with Playwright, TypeScript, and Page Object Model (POM).
 
-🛠️ Prerequisites
------------------
+---
 
-*   **Node.js:** v18.x or higher.
-    
-*   **Package Manager:** npm (included with Node.js).
-    
-*   **AI Tools (Optional):** Codex CI or GitHub Copilot CLI for terminal assistance.
-    
+## 🛠️ Prerequisites & Installation
 
+Before running the tests, ensure you have the following installed:
 
-🚀 Installation & Setup
------------------------
+### 1. Node.js (Version 18 or higher)
+Download it from nodejs.org. Verify your version with:
+node -v
 
-1.  **Clone the repository:**git clone cd saucelabprojectpw
-    
-2.  **Install dependencies:**npm install
-    
-3.  **Install Playwright Browsers:**npx playwright install --with-deps
-    
+### 2. Project Setup
+Clone the repository and install the required packages:
+git clone https://github.com/jvergara9208/SauceLabProjectPW.git
+cd SauceLabProjectPW
+npm install
 
-🏃 Execution Guide (CLI Reference)
-----------------------------------
+### 3. Playwright Browsers
+Install the necessary browser binaries and system dependencies:
+npx playwright install --with-deps
 
-### 1\. Base Execution
+### 4. Optional: Codex CI (Terminal AI Assistant)
+To install the AI assistant for terminal assistance:
+npm install -g codex-ci
 
-*   **Run all tests:** npm run test
-    
-*   **Run on Chromium:** npm run test -- --project=chromium
-    
-*   **Headed Mode:** npm run test -- --headed
-    
-*   **UI Mode (Visual):** npm run test -- --ui
-    
-*   **Debug Mode:** npm run test -- --debug
-    
+---
 
-### 2\. Execution by File (Specs)
+## 📂 Project Structure
 
-*   **Auth:** npm run test -- tests/auth.spec.ts
-    
-*   **Inventory:** npm run test -- tests/inventory.spec.ts
-    
-*   **Checkout:** npm run test -- tests/checkout.spec.ts
-    
+data/
+  └── testData.ts       # Centralized test data (users, products, messages)
+fixtures/
+  └── basePage.ts       # Dependency injection for Page Objects (Fixtures)
+pages/                  # Page Object Model implementation
+  ├── LoginPage.ts
+  ├── InventoryPage.ts
+  ├── ProductDetailsPage.ts
+  ├── CartPage.ts
+  ├── CheckoutPage.ts
+  ├── OverviewPage.ts
+  └── CheckoutCompletePage.ts
+playwright/.auth/       # Session storage (user.json)
+tests/                  # Test suites
+  ├── auth.setup.ts     # Global authentication setup
+  ├── auth.spec.ts
+  ├── inventory.spec.ts
+  └── checkout.spec.ts
+utils/                  # Helper functions and utilities
+playwright.config.ts    # Global Playwright configuration
+llm-prompts.md          # AI Interaction logs & Prompt Strategy
 
-### 3\. Advanced Filtering
+---
 
-*   **By test name:** npm run test -- -g "Login success"
-    
-*   **By Tag:** npm run test -- -g "@smoke"
-    
-*   **Parallelism:** npm run test -- --workers=1
-    
+## 🏃 Execution Guide (CLI Reference)
 
-📊 Reporting
-------------
+### 1. Base Execution
+* Run all tests (Headless): npm run test
+* Run on Chromium: npm run test -- --project=chromium
+* Run on Firefox: npm run test -- --project=firefox
+* Headed Mode: npm run test -- --headed
+* UI Mode (Visual): npm run test -- --ui
+* Debug Mode: npm run test -- --debug
+
+### 2. Execution by File (Specs)
+* Auth tests: npm run test -- tests/auth.spec.ts
+* Inventory tests: npm run test -- tests/inventory.spec.ts
+* Checkout tests: npm run test -- tests/checkout.spec.ts
+
+### 3. Advanced Filtering
+* By test name: npm run test -- -g "Login success"
+* By Tag (@smoke): npm run test -- -g "@smoke"
+* By Tag (@regression): npm run test -- -g "@regression"
+
+### 4. Parallelism & Retries
+* Specific workers: npm run test -- --workers=1
+* Retries on failure: npm run test -- --retries=1
+* Full Parallel: npm run test -- --fully-parallel
+
+---
+
+## 📊 Reporting
 
 ### Playwright HTML Report
-
-*   **Generate & Open:** npm run test:report
-    
-*   **Show manually:** npx playwright show-report playwright-report
-    
+* Generate & Open: npm run test:report
+* Show manually: npx playwright show-report playwright-report
 
 ### Allure Report (Advanced)
+* Run all and serve: npm run test:allure
+* Generate static report: npm run allure:generate
+* Open Allure server: npm run allure:serve
 
-*   **Run all and serve:** npm run test:allure
-    
-*   **Open Allure server:** npm run allure:serve
-    
+---
 
-🏗️ Design Decisions
---------------------
+## 🏗️ Design Decisions
 
-*   **POM & Fixtures:** I implemented a basePage fixture to handle Page Object instantiation. This keeps the tests clean and focused on assertions.
-    
-*   **Test Isolation:** Each test operates in a fresh context. We use auth.setup.ts to save the session state in playwright/.auth/user.json, significantly reducing execution time by reusing the login session.
-    
-*   **Robust Locators:** Prioritized data-test attributes to ensure tests are resilient to UI changes.
-    
-*   **CI/CD Ready:** Includes configurations for both GitHub Actions and GitLab CI, ensuring the suite can run in any pipeline.
-    
+* POM & Fixtures: I implemented a basePage fixture to handle Page Object instantiation automatically. This keeps the test files clean, readable, and strictly focused on assertions.
+* Test Isolation: Each test case operates in a fresh browser context via beforeEach hooks to prevent state leakage and ensure independent results.
+* Storage State: Global authentication is handled in auth.setup.ts, saving session data to playwright/.auth/user.json. This avoids redundant login steps, significantly reducing execution time.
+* Note on CI/CD: While the project includes configuration files, the core focus was placed on local execution stability, POM robustness, and detailed reporting (HTML/Allure).
 
-🤖 Terminal AI Integration (Optional)
--------------------------------------
+---
 
-*   **Codex CI:** npm install -g codex-ci
-    
-*   **Copilot CLI:** gh extension install github/gh-copilot
-    
-*   **Example:** gh copilot suggest "How to run playwright in parallel?"
-    
+## 🤖 Terminal AI Integration (Optional)
 
-📊 Interaction Log
-------------------
+* Codex CI: npm install -g codex-ci
+* Example: Type 'codex "How to run playwright in parallel?"' in your terminal.
 
-Detailed Prompt Engineering strategy:👉 [**llm-prompts.md**](https://www.google.com/search?q=./llm-prompts.md)
+---
 
+## 📊 Interaction Log
+Detailed Prompt Engineering strategy used for this project:
+See llm-prompts.md
 I use https://www.rich-text-to-markdown.com/ to create this markdown
